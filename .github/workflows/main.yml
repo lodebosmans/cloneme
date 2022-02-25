@@ -5,14 +5,11 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: [ 8, 17 ]
-    name: Run unit tests on Java ${{ matrix.java }}
+    name: Run unit tests on Java 8
     steps:
       - uses: actions/checkout@master
       - name: Setup java
         uses: actions/setup-java@v1
         with:
-          java-version: ${{ matrix.java }}
+          java-version: 8
       - run: mvn -f pom.xml clean test
